@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../services/api";
+import "./movie.css";
 
 function Movie() {
   // Pegando o parametro ID pela url
@@ -53,7 +54,12 @@ function Movie() {
         <h3>Sinopse</h3>
         <span>{movie.overview}</span>
 
-        <strong>Avaliação: {movie.vote_average} / 10</strong>
+        <strong>Avaliação: {Math.trunc(movie.vote_average)} / 10</strong>
+
+        <div className="btn-area">
+            <button>Salvar</button>
+            <button><a href="#">Trailer</a></button>
+        </div>
     </div>
   );
 }
