@@ -7,6 +7,9 @@ function Home() {
     // Criando um estado para armazenar filmes
     const [movies, setMovies] = useState([]);
 
+    // Criando um estado para loading
+    const [loading, setLoading] = useState(true);
+
     // Criando um useEffect para carregar os filmes assim que a aplicação abrir
     useEffect(() => {
         async function loadMovies(){
@@ -20,12 +23,19 @@ function Home() {
 
             // Carregando os filmes no array
             setMovies(response.data.results.slice(0, 10));
-            
+            setLoading(false);
         }
 
         loadMovies();
     }, []);
 
+    if(loading) {
+        return(
+            <div className="loading">
+                <h2>Carregando filmes...</h2>
+            </div>
+        );
+    }
     return(
         <div className="container">
             <div className="movie-list">
