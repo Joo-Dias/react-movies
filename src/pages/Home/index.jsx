@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import { Link } from "react-router-dom";
+import "./home.css";
 
 function Home() {
     // Criando um estado para armazenar filmes
     const [movies, setMovies] = useState([]);
 
-    // Criando um useEffect para carregar os filmes
+    // Criando um useEffect para carregar os filmes assim que a aplicação abrir
     useEffect(() => {
         async function loadMovies(){
             const response = await api.get("movie/now_playing", {
@@ -16,6 +18,8 @@ function Home() {
                 }
             });
 
+            // Carregando os filmes no array
+            setMovies(response.data.results.slice(0, 10));
             
         }
 
@@ -23,8 +27,18 @@ function Home() {
     }, []);
 
     return(
-        <div>
-            <h1>HOME</h1>
+        <div className="container">
+            <div className="movie-list">
+                {movies.map((movie) => {
+                    return(
+                        <article key={movie.id}>
+                            <strong>{movie.title}</strong>
+                            <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
+                            <Link to={`/movie/${movie.id}`}>Acessar</Link>
+                        </article>
+                    )
+                })}
+            </div>
         </div>
     );
 }
