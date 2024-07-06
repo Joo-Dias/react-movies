@@ -1,0 +1,39 @@
+
+.my-moviesList {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-moviesList h1 {
+    margin-bottom: 14px;
+}
+
+.my-moviesList span {
+    font-size: 18px;
+}
+
+.my-moviesList ul {
+    width: 720px;
+}
+
+.my-moviesList ul li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.my-moviesList div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-moviesList div a {
+    text-decoration: none;
+    color: #116feb;
+    margin-right: 14px;
+}
