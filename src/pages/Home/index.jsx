@@ -46,12 +46,12 @@ function Home() {
   }
   return (
     <div className="container">
-      <Card sx={{ maxWidth: 345 }}>
-        {movies.map((movie) => {
-          return (
-            <>
+      {movies.map((movie) => {
+        return (
+          <>
+            <Card sx={{ maxWidth: 400 }} className="custom-card">
               <CardMedia
-                sx={{ height: 140 }}
+                sx={{ height: 200 }}
                 image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 title={movie.title}
               />
@@ -69,10 +69,10 @@ function Home() {
                   Acessar
                 </Button>
               </CardActions>
-            </>
-          );
-        })}
-      </Card>
+            </Card>
+          </>
+        );
+      })}
     </div>
   );
 }
